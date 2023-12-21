@@ -1,15 +1,15 @@
 import React from 'react';
-import { useContacts } from 'utils/contactUtils';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../store/reducer';
+import { useContacts } from 'utils/contactUtils';
 import ContactListItem from '../ContactListItem/ContactListItem';
 import styles from './ContactList.module.css';
 
 const ContactList = () => {
-  const { filteredContacts } = useContacts();
+const {filteredContacts} = useContacts();
 
   const dispatch = useDispatch();
-  
+
   const handleDeleteContact = contactId => {
     dispatch(deleteContact(contactId));
   };

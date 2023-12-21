@@ -1,52 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { fetchContactsApi, addContactApi, deleteContactApi } from '../api/api';
 
-const apiUrl = 'https://658315ad02f747c8367b08c3.mockapi.io/contacts';
-
-const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
-  try {
-    const response = await axios.get(apiUrl);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-});
-
-const formatDate = (date, manual = true) => {
-  const currentDate = date ? new Date(date) : new Date();
-
-  if (manual) {
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  } else {
-    return currentDate.toLocaleDateString('en-GB');
-  }
-};
-
-const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async contact => {
-    try {
-      const response = await axios.post(apiUrl, contact);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-);
-
+const fetchContacts = createAsyncThunk('contacts/fetchAll', fetchContactsApi);
+const addContact = createAsyncThunk('contacts/addContact', addContactApi);
 const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async contactId => {
-    try {
-      await axios.delete(`${apiUrl}/${contactId}`);
-      return contactId;
-    } catch (error) {
-      throw error;
-    }
-  }
+  deleteContactApi
 );
 
 const contactSlice = createSlice({
@@ -108,4 +67,4 @@ const contactSlice = createSlice({
 export const { setFilter } = contactSlice.actions;
 
 export default contactSlice.reducer;
-export { formatDate, fetchContacts, addContact, deleteContact };
+export { fetchContacts, addContact, deleteContact };

@@ -1,16 +1,24 @@
 import React from 'react';
 import styles from './ContactListItem.module.css';
-import { formatDate } from '../../store/reducer';
+import { formatDate } from '../../utils/formatDate';
 
 const ContactListItem = ({ contact, onDelete }) => {
-  const formattedDate =
+  const currentDate = new Date();
+
+  const formattedDate = () =>
     contact && contact.createdAt
       ? formatDate(contact.createdAt, false)
-      : 'Date not available';
+      : formatDate(currentDate, false);
 
   return (
     <li className={styles.listItem}>
-      {contact.name}: {contact.number} <span>Added on: {formattedDate}</span>
+      <div className={styles.contactItemBlock}>
+        {contact.name}:{' '}
+        <a href={`tel:${contact.number}`} className={styles.callLink}>
+          {contact.number}
+        </a>{' '}
+      </div>
+      <span className={styles.contactCreated}>Added on: {formattedDate()}</span>
       <button className={styles.delBtn} onClick={() => onDelete(contact.id)}>
         Delete
       </button>

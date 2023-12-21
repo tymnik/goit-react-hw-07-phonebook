@@ -12,6 +12,7 @@
     margin-left: 10px;
     border: 2px solid #ADCFFF;
     border-radius: 20px;
+    height: 30px;
 }
 
 .inputField:hover,

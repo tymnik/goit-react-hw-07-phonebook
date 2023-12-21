@@ -1,6 +1,26 @@
 .listItem {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 500px;
+}
+
+.contactItemBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contactCreated {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.callLink:hover,
+.callLink:focus {
+    color: #ADCFFF;
 }
 
 .delBtn {

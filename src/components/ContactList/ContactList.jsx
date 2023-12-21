@@ -6,7 +6,7 @@ import ContactListItem from '../ContactListItem/ContactListItem';
 import styles from './ContactList.module.css';
 
 const ContactList = () => {
-const {filteredContacts} = useContacts();
+  const { filteredContacts } = useContacts();
 
   const dispatch = useDispatch();
 

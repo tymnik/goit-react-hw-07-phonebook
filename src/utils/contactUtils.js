@@ -9,7 +9,7 @@ export const useContacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.contacts.filter);
 
   const filteredContacts = contacts.filter(contact =>

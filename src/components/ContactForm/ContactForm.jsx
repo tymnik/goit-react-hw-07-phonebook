@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addContact, formatDate } from '../../store/reducer';
+import { addContact } from '../../store/reducer';
+import { formatDate } from 'utils/formatDate';
 import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
